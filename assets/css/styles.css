@@ -6,6 +6,8 @@
   --header-height: 3rem;
 
   /*========== Colors ==========*/
+  --hue: 240;
+  --first-modal-color: hsl(var(--hue), 16%, 18%);
   --first-color: #1b8ab9;
   --first-color-alt: #043c86;
   --title-color: #2b3f54;
@@ -23,6 +25,7 @@
   --normal-font-size: .938rem;
   --small-font-size: .813rem;
   --smaller-font-size: .75rem;
+  --big-font-size: 1.5rem;
 
   /*========== Font weight ==========*/
   --font-medium: 500;
@@ -38,6 +41,8 @@
 
   --z-tooltip: 10;
   --z-fixed: 100;
+  --z-modal: 1000;
+
 }
 
 @media screen and (min-width: 768px){
@@ -557,4 +562,94 @@ img{
     .home__container {
         height: 640px;
     }
+}
+
+/* Modal configurations */
+.modal{
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.modal__button{
+  display: inline-block;
+  background-color: var(--first-modal-color);
+  color: #FFF;
+  padding: 1rem 1.25rem;
+  border-radius: .5rem;
+  transition: .3s;
+}
+
+.modal__button:hover{
+  background-color: var(--first-color-alt);
+}
+
+.modal__container{
+  position: absolute;
+  left: 0;
+  background-color: hsla(var(--hue), 18%, 75%, .8);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: flex-end;
+  overflow: hidden;
+  transition: all .3s;
+  visibility: hidden;
+  opacity: 0;
+
+}
+
+.modal__content{
+  position: relative;
+  background-color: var(--container-color);
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  border-radius: 1rem 1rem 0 0;
+  transition: all .3s;
+
+  transform: translateY(10%);
+
+}
+
+.modal__img{
+  width: 150px;
+  margin-bottom: .75rem;
+}
+
+.modal__title{
+  font-size: var(--big-font-size);
+  color: var(--title-color);
+  font-weight: 500;
+}
+
+.modal__description{
+  margin-bottom: 1.5rem;
+}
+
+.modal__button-width{
+  width: 90%;
+}
+
+/* Show modal */
+.show-modal{
+  visibility: visible;
+  opacity: 1;
+}
+
+.show-modal .modal__content{
+  transform: translateY(0);
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (min-width: 576px){
+  .modal__content{
+    margin: auto;
+    width: 380px;
+    border-radius: 1.25rem;
+  }
+
+  .modal__img{
+    width: 170px;
+  }
 }
